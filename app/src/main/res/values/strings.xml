@@ -1,4 +1,27 @@
 <resources>
-    <string name="app_name">TumblrClient</string>
-    <string name="lbl_login">login</string>
+    <string name="app_name">tumblr</string>
+    <string name="lbl_tumblr">tumblr</string>
+    <string name="lbl_login">Login</string>
+    <string name="lbl_signup">Don\'t have an account? Sign up</string>
+    <string name="hnt_email">Email</string>
+    <string name="hnt_password">Password</string>
+    <string name="msg_email_validation">Please enter email</string>
+    <string name="msg_invalid_email_valid">Please enter valid email</string>
+    <string name="msg_password_validation">Please enter password</string>
+    <string name="msg_connection_failed">Please connect to Internet</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="menu_dashboard">User Dashboard</string>
+    <string name="tag_blogs">Blogs</string>
+    <string name="tag_settings">Settings</string>
+    <string name="tag_log_out">Log out</string>
+    <string name="tag_dashboard">User Dashboard</string>
+    <string name="msg_load_feeds">Please connect to internet to load more Feeds</string>
 </resources>

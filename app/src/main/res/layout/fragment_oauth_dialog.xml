@@ -1,0 +1,16 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="@dimen/dimen_320"
+    android:minHeight="@dimen/dimen_400">
+
+    <WebView
+        android:id="@+id/web_oauth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+    </WebView>
+
+</RelativeLayout>
