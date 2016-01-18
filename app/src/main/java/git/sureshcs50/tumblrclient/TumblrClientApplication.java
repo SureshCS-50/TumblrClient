@@ -41,7 +41,7 @@ public class TumblrClientApplication extends Application {
         return mJumblrClient;
     }
 
-    public static void setClientAsNull(){
+    public static void setClientAsNull() {
         mJumblrClient = null;
     }
 

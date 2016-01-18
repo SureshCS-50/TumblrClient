@@ -5,6 +5,9 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 
 import com.tumblr.jumblr.JumblrClient;
+import com.tumblr.jumblr.types.User;
+
+import org.apache.http.client.UserTokenHandler;
 
 import git.sureshcs50.tumblrclient.R;
 import git.sureshcs50.tumblrclient.TumblrClientApplication;
@@ -15,8 +18,16 @@ import git.sureshcs50.tumblrclient.utils.Utils;
  */
 public class BaseActivity extends AppCompatActivity {
 
+    private static User mUser;
+
     public JumblrClient getClient() {
         return TumblrClientApplication.getClient();
+    }
+
+    public User getUser(){return mUser;}
+
+    public void setUser(User user){
+        this.mUser = user;
     }
 
     @Override

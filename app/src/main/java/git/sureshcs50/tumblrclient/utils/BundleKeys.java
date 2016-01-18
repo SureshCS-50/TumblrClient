@@ -5,4 +5,5 @@ package git.sureshcs50.tumblrclient.utils;
  */
 public class BundleKeys {
     public static final String TAG_BLOG_NAME = "tag_blog_name";
+    public static final String TAG_TEXT_POST = "tag_text_post";
 }

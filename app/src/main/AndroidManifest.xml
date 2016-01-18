@@ -25,6 +25,8 @@
             android:name=".ui.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity android:name=".ui.activities.PostActivity" >
+        </activity>
     </application>
 
 </manifest>

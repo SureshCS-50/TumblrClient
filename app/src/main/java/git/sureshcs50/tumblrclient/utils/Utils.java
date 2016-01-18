@@ -7,8 +7,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Patterns;
 
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
+import java.lang.reflect.Type;
 import java.util.regex.Pattern;
 
 import git.sureshcs50.tumblrclient.TumblrClientApplication;
@@ -66,4 +68,22 @@ public class Utils {
         editor.commit();
         TumblrClientApplication.setClientAsNull();
     }
+
+
+    public static <T> String convertObjectToStringJson(T someObject, Type type) {
+        Gson mGson = new Gson();
+        String mStrAppointmentJson = mGson.toJson(someObject, type);
+        return mStrAppointmentJson;
+    }
+
+    public static <T> T getObjectFromJson(String json, Type type) {
+        Gson mGson = new Gson();
+        if (json != null) {
+            if (json.isEmpty()) {
+                return null;
+            }
+        }
+        return mGson.fromJson(json, type);
+    }
+
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="git.sureshcs50.tumblrclient.ui.activities.PostActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_8">
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_8"
+                android:hint="@string/hnt_title" />
+
+            <EditText
+                android:id="@+id/etBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etTitle"
+                android:layout_margin="@dimen/dimen_8"
+                android:gravity="start"
+                android:hint="@string/hnt_post"
+                android:minHeight="@dimen/dimen_100"
+                android:singleLine="false" />
+
+            <TextView
+                android:id="@+id/txtBlog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etBody"
+                android:layout_margin="@dimen/dimen_8"
+                android:text="@string/tag_blogs"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Spinner
+                android:id="@+id/spnrBlogs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtBlog"
+                android:layout_margin="@dimen/dimen_8" />
+
+            <TextView
+                android:id="@+id/txtAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spnrBlogs"
+                android:layout_margin="@dimen/dimen_8"
+                android:text="@string/tag_action"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Spinner
+                android:id="@+id/spnrAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtAction"
+                android:layout_margin="@dimen/dimen_8" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

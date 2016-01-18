@@ -17,6 +17,7 @@ import com.tumblr.jumblr.types.Post;
 import com.tumblr.jumblr.types.TextPost;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -117,18 +118,27 @@ public class FeedsAdapter extends BaseAdapter {
     }
 
     public void addItems(List<Post> posts) {
-        // filters only text post and display in ListView..
-        this.mPosts.addAll(posts);
-        removeDuplicatePosts();
-        notifyDataSetChanged();
+        if (posts.size() > 0) {
+            this.mPosts.addAll(posts);
+            removeDuplicatePosts();
+            notifyDataSetChanged();
+        }
     }
 
     private void removeDuplicatePosts() {
-        Map<Long, Post> map = new HashMap<>();
+        Map<Long, Post> map = new LinkedHashMap<>();
         for (Post post : mPosts) map.put(post.getId(), post);
         mPosts.clear();
         for (Map.Entry<Long, Post> mapLoop : map.entrySet()) {
             mPosts.add(mapLoop.getValue());
+        }
+    }
+
+    public void insertItem(Post post) {
+        if (post != null) {
+            this.mPosts.add(0, post);
+            removeDuplicatePosts();
+            notifyDataSetChanged();
         }
     }
 

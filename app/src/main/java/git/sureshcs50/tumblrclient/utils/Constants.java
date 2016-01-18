@@ -8,6 +8,7 @@ public class Constants {
     public static final String TUMBLR_CLIENT_PREFERENCES = "tumblr_client_preferences";
     public static final String PREFS_ACCESS_TOKEN = "prefs_access_token";
     public static final String PREFS_TOKEN_SECRET = "prefs_token_secret";
+    public static final String PREFS_USER = "prefs_user";
 
     // urls..
     public static final String BASE_URL = "";
@@ -32,4 +33,22 @@ public class Constants {
 
     // blog base host name..
     public static final String BASE_HOST_NAME = ".tumblr.com";
+
+    // post actions..
+    public static final String POST_ACTION_PUBLISH = "Publish now";
+    public static final String POST_ACTION_DRAFT = "Save as draft";
+
+    // post status..
+    public static final String POST_STATE_PUBLISH = "published";
+    public static final String POST_STATE_DRAFT = "draft";
+
+    // Text post result..
+    public static final String RESULT_SUCCESS = "success";
+    public static final String RESULT_FAIL = "fail";
+
+    // request and result code..
+    public static final int REQUEST_CODE_POST = 001;
+    public static final int RESULT_CODE_POST = 002;
+    public static final int RESULT_CODE_DRAFT = 003;
+
 }

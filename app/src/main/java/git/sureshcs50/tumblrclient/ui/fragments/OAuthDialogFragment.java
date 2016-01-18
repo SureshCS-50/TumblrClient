@@ -17,6 +17,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import git.sureshcs50.tumblrclient.R;
+import git.sureshcs50.tumblrclient.TumblrClientApplication;
 import git.sureshcs50.tumblrclient.ui.activities.HomeActivity;
 import git.sureshcs50.tumblrclient.utils.Constants;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;

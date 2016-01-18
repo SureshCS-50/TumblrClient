@@ -8,6 +8,11 @@ import com.tumblr.jumblr.types.User;
 public class GetUserInfoAsync extends BaseAsyncTask<User> {
     @Override
     protected User doInBackground(Object... params) {
-        return getClient().user();
+        try {
+            return getClient().user();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

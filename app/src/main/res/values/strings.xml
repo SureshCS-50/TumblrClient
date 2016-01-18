@@ -24,4 +24,10 @@
     <string name="tag_log_out">Log out</string>
     <string name="tag_dashboard">User Dashboard</string>
     <string name="msg_load_feeds">Please connect to internet to load more Feeds</string>
+    <string name="hnt_title">Title</string>
+    <string name="hnt_post">Post</string>
+    <string name="tag_action">Action</string>
+    <string name="msg_failed_to_get_feeds">Failed to get feeds</string>
+    <string name="msg_failed_to_get_user_info">Failed to get User Information</string>
+    <string name="msg_post_failed">Failed to Post</string>
 </resources>

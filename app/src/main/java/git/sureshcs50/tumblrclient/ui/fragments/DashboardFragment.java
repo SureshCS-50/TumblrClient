@@ -1,6 +1,6 @@
 package git.sureshcs50.tumblrclient.ui.fragments;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +33,7 @@ public class DashboardFragment extends BaseFragment {
     private FeedsAdapter mAdapter;
     private List<Post> mPosts;
     private String mBlogName = "";
+    private int mOffset = 0;
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -71,7 +72,7 @@ public class DashboardFragment extends BaseFragment {
         mListViewFeeds.setAdapter(mAdapter);
 
         // loads feeds for dashboard..
-        loadFeeds();
+        loadFeeds(mOffset, false);
 
         //setting up footer layout for ListView..
         LayoutInflater footerInflater = (LayoutInflater) getActivity().getLayoutInflater();
@@ -85,7 +86,7 @@ public class DashboardFragment extends BaseFragment {
             public void loadMore(int page, int totalItemsCount) {
                 try {
                     if (Utils.hasConnection(getActivity())) {
-                        loadFeeds();
+                        loadFeeds(mOffset, false);
                         mAdapter.notifyDataSetChanged();
                     } else {
                         mFooterLayout.setVisibility(View.GONE);
@@ -100,18 +101,33 @@ public class DashboardFragment extends BaseFragment {
         return view;
     }
 
-    private void loadFeeds() {
+    private void loadFeeds(int offset, final boolean isNewlyAddedPost) {
         if (Utils.hasConnection(getActivity())) {
-            mGetDashboardFeedAsync = new GetDashboardFeedAsync(getActivity(), mBlogName, Constants.POST_PAGINATION_LIMIT) {
+            mGetDashboardFeedAsync = new GetDashboardFeedAsync(getActivity(), mBlogName, Constants.POST_PAGINATION_LIMIT, offset) {
                 @Override
                 protected void onPostExecute(List<Post> posts) {
                     super.onPostExecute(posts);
+
+                    // inserts newly added post to top of the list.
                     if (posts != null) {
-                        mAdapter.addItems(posts);
+                        if(!isNewlyAddedPost)
+                            mAdapter.addItems(posts);
+                        else
+                            mAdapter.insertItem(posts.get(0));
+                    } else {
+                        Toast.makeText(getActivity(), getString(R.string.msg_failed_to_get_feeds), Toast.LENGTH_SHORT).show();
                     }
                 }
             };
-            mGetDashboardFeedAsync.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+            mGetDashboardFeedAsync.execute();
         }
+        mOffset += Constants.POST_PAGINATION_LIMIT;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // loads new post..
+        loadFeeds(0, true);
     }
 }
