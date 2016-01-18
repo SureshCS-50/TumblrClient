@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TumblrClient</string>
+    <string name="lbl_login">login</string>
+</resources>
