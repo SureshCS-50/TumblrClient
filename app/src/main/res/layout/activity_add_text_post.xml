@@ -17,17 +17,13 @@
 
             <EditText
                 android:id="@+id/etTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_8"
+                style="@style/EditTextStyle"
                 android:hint="@string/hnt_title" />
 
             <EditText
                 android:id="@+id/etBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
                 android:layout_below="@+id/etTitle"
-                android:layout_margin="@dimen/dimen_8"
                 android:gravity="start"
                 android:hint="@string/hnt_post"
                 android:minHeight="@dimen/dimen_100"
@@ -35,12 +31,9 @@
 
             <TextView
                 android:id="@+id/txtBlog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/TextViewTitle.Default"
                 android:layout_below="@+id/etBody"
-                android:layout_margin="@dimen/dimen_8"
-                android:text="@string/tag_blogs"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:text="@string/tag_blogs" />
 
             <Spinner
                 android:id="@+id/spnrBlogs"
@@ -51,12 +44,9 @@
 
             <TextView
                 android:id="@+id/txtAction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/TextViewTitle.Default"
                 android:layout_below="@+id/spnrBlogs"
-                android:layout_margin="@dimen/dimen_8"
-                android:text="@string/tag_action"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:text="@string/tag_action" />
 
             <Spinner
                 android:id="@+id/spnrAction"

@@ -30,4 +30,5 @@
     <string name="msg_failed_to_get_feeds">Failed to get feeds</string>
     <string name="msg_failed_to_get_user_info">Failed to get User Information</string>
     <string name="msg_post_failed">Failed to Post</string>
+    <string name="msg_post_delete_failed">Post delete failed</string>
 </resources>

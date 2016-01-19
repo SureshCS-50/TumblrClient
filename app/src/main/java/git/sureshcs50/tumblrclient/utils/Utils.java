@@ -69,21 +69,4 @@ public class Utils {
         TumblrClientApplication.setClientAsNull();
     }
 
-
-    public static <T> String convertObjectToStringJson(T someObject, Type type) {
-        Gson mGson = new Gson();
-        String mStrAppointmentJson = mGson.toJson(someObject, type);
-        return mStrAppointmentJson;
-    }
-
-    public static <T> T getObjectFromJson(String json, Type type) {
-        Gson mGson = new Gson();
-        if (json != null) {
-            if (json.isEmpty()) {
-                return null;
-            }
-        }
-        return mGson.fromJson(json, type);
-    }
-
 }

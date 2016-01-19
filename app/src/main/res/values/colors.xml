@@ -9,7 +9,10 @@
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorIcons">#FFFFFF</color>
 
+
+
     <!-- custom colors -->
     <color name="white_alpha_100">#64ffffff</color>
     <color name="white_alpha_75">#4bffffff</color>
+    <color name="red">#e74c3c</color>
 </resources>

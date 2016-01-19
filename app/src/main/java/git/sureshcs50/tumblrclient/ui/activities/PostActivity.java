@@ -1,5 +1,6 @@
 package git.sureshcs50.tumblrclient.ui.activities;
 
+import android.app.ActionBar;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,6 +38,12 @@ public class PostActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_text_post);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Add Post");
+        }
 
         mEtTitle = (EditText) findViewById(R.id.etTitle);
         mEtBody = (EditText) findViewById(R.id.etBody);

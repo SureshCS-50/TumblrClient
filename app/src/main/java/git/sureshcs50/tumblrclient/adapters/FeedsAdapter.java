@@ -1,14 +1,17 @@
 package git.sureshcs50.tumblrclient.adapters;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -22,6 +25,9 @@ import java.util.List;
 import java.util.Map;
 
 import git.sureshcs50.tumblrclient.R;
+import git.sureshcs50.tumblrclient.asyncs.DeletePostAsync;
+import git.sureshcs50.tumblrclient.asyncs.EditPostAsync;
+import git.sureshcs50.tumblrclient.utils.Constants;
 import git.sureshcs50.tumblrclient.utils.Utils;
 
 /**
@@ -80,6 +86,8 @@ public class FeedsAdapter extends BaseAdapter {
                     viewHolder.txtTimestamp = (TextView) view.findViewById(R.id.txtTimestamp);
                     viewHolder.txtTitle = (TextView) view.findViewById(R.id.txtTitle);
                     viewHolder.txtContent = (TextView) view.findViewById(R.id.txtContent);
+                    viewHolder.btnDelete = (Button) view.findViewById(R.id.btnDelete);
+                    viewHolder.btnPublish = (Button) view.findViewById(R.id.btnPublish);
                     break;
                 case TYPE_PHOTO_POST:
                     view = mInflater.inflate(R.layout.card_photo_post, null);
@@ -87,6 +95,8 @@ public class FeedsAdapter extends BaseAdapter {
                     viewHolder.txtTimestamp = (TextView) view.findViewById(R.id.txtTimestamp);
                     viewHolder.imgPhoto = (ImageView) view.findViewById(R.id.imgPhoto);
                     viewHolder.txtContent = (TextView) view.findViewById(R.id.txtContent);
+                    viewHolder.btnDelete = (Button) view.findViewById(R.id.btnDelete);
+                    viewHolder.btnPublish = (Button) view.findViewById(R.id.btnPublish);
                     break;
             }
             view.setTag(viewHolder);
@@ -114,7 +124,53 @@ public class FeedsAdapter extends BaseAdapter {
                 break;
         }
 
+        final Post post = mPosts.get(position);
+
+        if(post.getState().equalsIgnoreCase(Constants.POST_STATE_PUBLISH)){
+            viewHolder.btnPublish.setVisibility(View.GONE);
+        }
+
+        viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DeletePostAsync(post.getBlogName()+Constants.BASE_HOST_NAME, post.getId()){
+                    @Override
+                    protected void onPostExecute(String result) {
+                        super.onPostExecute(result);
+                        if(result.equalsIgnoreCase(Constants.RESULT_SUCCESS)){
+                            mPosts.remove(post);
+                            notifyDataSetChanged();
+                        } else{
+                            Toast.makeText(mContext, mContext.getResources().getString(R.string.msg_post_delete_failed), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+            }
+        });
+
+        viewHolder.btnPublish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editPost(post, Constants.POST_STATE_PUBLISH);
+            }
+        });
+
         return view;
+    }
+
+    private void editPost(final Post post, String postState) {
+        new EditPostAsync(post, postState){
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                if(result.equalsIgnoreCase(Constants.RESULT_SUCCESS)){
+                    mPosts.remove(post);
+                    notifyDataSetChanged();
+                } else{
+                    Toast.makeText(mContext, mContext.getResources().getString(R.string.msg_post_failed), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
     }
 
     public void addItems(List<Post> posts) {
@@ -134,9 +190,9 @@ public class FeedsAdapter extends BaseAdapter {
         }
     }
 
-    public void insertItem(Post post) {
-        if (post != null) {
-            this.mPosts.add(0, post);
+    public void insertItem(List<Post> posts) {
+        if (posts != null) {
+            this.mPosts.addAll(0, posts);
             removeDuplicatePosts();
             notifyDataSetChanged();
         }
@@ -145,5 +201,6 @@ public class FeedsAdapter extends BaseAdapter {
     public static class ViewHolder {
         public TextView txtName, txtTimestamp, txtTitle, txtContent;
         public ImageView imgPhoto;
+        public Button btnDelete, btnPublish;
     }
 }

@@ -10,9 +10,6 @@ public class Constants {
     public static final String PREFS_TOKEN_SECRET = "prefs_token_secret";
     public static final String PREFS_USER = "prefs_user";
 
-    // urls..
-    public static final String BASE_URL = "";
-
     // authentication
     public static final String OAUTH_BASE_URL = "http://www.tumblr.com/oauth/";
     public static final String REQUEST_URL = OAUTH_BASE_URL+"request_token";
@@ -20,8 +17,8 @@ public class Constants {
     public static final String AUTHORIZE_URL = OAUTH_BASE_URL+"authorize";
 
     // taken from tumblr app registration
-    public static final String CONSUMER_KEY = "LM893Nk8Z4GhZtpPHUeALqW5YEX2rXb1rewdAXuduIBmra0Q8B";
-    public static final String CONSUMER_SECRET = "yd7IRwLT7Y55V2DSUrM2mtiiw0QtOq6qABdY4QmB8zP9xo5Gss";
+    public static final String CONSUMER_KEY = "Your customer key";
+    public static final String CONSUMER_SECRET = "Your customer secret key";
 
     // callback url..
     public static final String	OAUTH_CALLBACK_SCHEME	= "oauthflow-tumblr";
@@ -51,4 +48,8 @@ public class Constants {
     public static final int RESULT_CODE_POST = 002;
     public static final int RESULT_CODE_DRAFT = 003;
 
+    // get post feeds status code..
+    public static final int FEED_STATUS_DASHBOARD = 0;
+    public static final int FEED_STATUS_BLOG = 1;
+    public static final int FEED_STATUS_BLOG_DRAFT = 2;
 }

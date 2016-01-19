@@ -1,5 +1,6 @@
 package git.sureshcs50.tumblrclient.ui.activities;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -147,7 +148,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         // loads first fragment..
         mCurrentFragmentTag = DashboardFragment.class.getSimpleName();
-        loadFragment(DashboardFragment.newInstance(getString(R.string.tag_dashboard)));
+        loadFragment(DashboardFragment.newInstance(getString(R.string.tag_dashboard), false, Constants.FEED_STATUS_DASHBOARD));
     }
 
     private void updateNavigationMenus() {
@@ -192,7 +193,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             // if current fragment is same as clicked item's fragment it won't load..
             if (!mCurrentFragmentTag.equalsIgnoreCase(DashboardFragment.class.getSimpleName())) {
                 mCurrentFragmentTag = DashboardFragment.class.getSimpleName();
-                loadFragment(DashboardFragment.newInstance(getString(R.string.tag_dashboard)));
+                loadFragment(DashboardFragment.newInstance(getString(R.string.tag_dashboard), false, Constants.FEED_STATUS_DASHBOARD));
             }
         } else {
             // check blog item is clicked..
@@ -207,7 +208,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             // if clicked item is same as current fragment then it won't load that fragment again..
             if ((!mCurrentFragmentTag.equalsIgnoreCase(title)) && isBlogClicked) {
                 mCurrentFragmentTag = title;
-                loadFragment(DashboardFragment.newInstance(mCurrentFragmentTag));
+                loadFragment(DashboardFragment.newInstance(mCurrentFragmentTag, true, Constants.FEED_STATUS_BLOG));
             }
         }
 
@@ -219,7 +220,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private void loadFragment(Fragment fragment) {
         mFragmentTransition = mFragmentManager.beginTransaction();
         mFragmentTransition.replace(R.id.container, fragment, mCurrentFragmentTag)
-                .addToBackStack(null)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
@@ -232,5 +232,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         if (fragment.getTag().equalsIgnoreCase(mCurrentFragmentTag)) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void setActionBarTitle(String title) {
+        mToolbar.setTitle(title);
     }
 }

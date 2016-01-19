@@ -14,17 +14,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TextViewTitle.White" parent="Base.TextAppearance.AppCompat.Medium">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="EditTextStyle" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:layout_margin">@dimen/dimen_8</item>
-    </style>
-
-    <style name="TextViewSubTitle.White" parent="Base.TextAppearance.AppCompat.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_margin">@dimen/dimen_8</item>
     </style>
 
@@ -42,18 +34,43 @@
         <item name="android:layout_margin">@dimen/dimen_8</item>
     </style>
 
-    <style name="EditTextStyle.White" parent="Base.Widget.AppCompat.EditText">
-        <item name="android:layout_width">match_parent</item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style name="TextViewTitle.White" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/dimen_4</item>
-        <item name="android:layout_marginTop">@dimen/dimen_4</item>
-        <item name="android:layout_marginRight">@dimen/dimen_4</item>
-        <item name="android:layout_marginBottom">@dimen/dimen_4</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textColorHint">@color/white_alpha_75</item>
-        <item name="android:textCursorDrawable">@drawable/white_cursor</item>
-        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
-        <item name="android:background">@drawable/edittext_white_transparent</item>
+        <item name="android:layout_margin">@dimen/dimen_8</item>
+    </style>
+
+    <style name="TextViewSubTitle.White" parent="Base.TextAppearance.AppCompat.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">@dimen/dimen_8</item>
     </style>
 
     <style name="FloatingHintStyle" parent="Widget.Design.TextInputLayout">

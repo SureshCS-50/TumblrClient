@@ -3,6 +3,7 @@ package git.sureshcs50.tumblrclient.ui.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.tumblr.jumblr.JumblrClient;
 import com.tumblr.jumblr.types.User;
@@ -45,5 +46,16 @@ public class BaseActivity extends AppCompatActivity {
             });
             alertDialog.show();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
